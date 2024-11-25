@@ -1,0 +1,15 @@
+#!/bin/bash
+
+timestamp=$(date "+%F %H:%M:%S")
+user=$(whoami)
+input=" "
+pcname=$(hostname)
+
+
+while [ input != "exit" ];
+do
+    path=$(pwd)
+    read -p "($user@$pcname)-($path): " input
+    eval $input
+    echo "$timestamp User:$user - Log entry: $input" >> user_activity.log
+done
